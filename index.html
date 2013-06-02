@@ -25,11 +25,11 @@
         <script>
             var topoFile
 
-            var width = 800,
-                height = 770,
-                lon = 146.7,
-                lat = -41.8,
-                scale = 7000;
+            var width = 600,
+                height = 700,
+                lon = 146.3,
+                lat = -41.9,
+                scale = 6000;
             
             var projection = d3.geo.mercator() 
                 .translate([width / 2, height / 2]) 
@@ -52,6 +52,7 @@
             .attr("d", path);
             
             d3.json("medians_t.json", function(error, tas) {
+                    topoFile = tas;
                     svg.insert("path", ".graticule")
                     .datum(topojson.feature(tas, tas.objects.medians))
                     .attr("class", "land")
